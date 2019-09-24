@@ -1,15 +1,38 @@
-//
-//  main.c
-//  wei
-//
-//  Created by s20181102929 on 2019/9/24.
-//  Copyright © 2019 s20181102929. All rights reserved.
-//
-
 #include <stdio.h>
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+typedef struct wei *List;
+struct wei
+{
+    int data;
+    List next;
+};
+List create()
+{
+    List head,ptr,p;
+    head=(List)malloc(sizeof(struct wei));
+    ptr=(List)malloc(sizeof(struct wei));
+    p=(List)malloc(sizeof(struct wei));
+    p=NULL;
+    int n;
+    scanf("%d",&n);
+    while(n!=-1)
+    {
+        ptr->data=n;
+        ptr->next=p;
+        p=ptr;
+        ptr=(List)malloc(sizeof(struct wei));
+        scanf("%d",&n);
+    }
+    return p;
+}
+int main()
+{
+    List L;
+    L=create();
+    while(L!=NULL)
+    {
+        printf("%d     ",L->data);
+        L=L->next;
+        
+    }
     return 0;
 }
